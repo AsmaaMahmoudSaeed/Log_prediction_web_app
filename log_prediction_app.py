@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
+import streamlit as st
+import gdown
+import pickle
 ## to run -----> streamlit run your_script.py
 # Set page configuration
 # page_title="Well Log DT Prediction App": Sets the browser tab title to "Well Log DT Prediction App".
@@ -16,6 +19,14 @@ This application uses a pre-trained Random Forest model to predict the DT (sonic
 Enter the values for RHOB, GR, NPHI, and PEF below to get the predicted DT value.
 """)
 
+
+@st.cache_resource
+def load_rf_model():
+    url = 'https://drive.google.com/file/d/1ySNUKWRAhq27DCdnt1t4-fM22XkIFeJ5/view?usp=sharing'
+    output_path = 'model.pkl'
+    gdown.download(url, output_path, quiet=False, fuzzy=True)
+    model = pickle.load(open('model.pkl', 'rb'))
+    return model
 # File path for the saved model
 MODEL_PATH = "model.pkl"
 
