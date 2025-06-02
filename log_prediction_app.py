@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
-import streamlit as st
 import gdown
 import pickle
 ## to run -----> streamlit run your_script.py
@@ -20,20 +19,50 @@ Enter the values for RHOB, GR, NPHI, and PEF below to get the predicted DT value
 """)
 
 
+import streamlit as st
+import pandas as pd
+import joblib
+import os
+import gdown
+import pickle
+
 @st.cache_resource
 def load_rf_model():
-    url = 'https://drive.google.com/file/d/1ySNUKWRAhq27DCdnt1t4-fM22XkIFeJ5/view?usp=sharing'
-    output_path = 'cmodel.pkl'
-    gdown.download(url, output_path, quiet=False, fuzzy=True)
-    model = pickle.load(open('cmodel.pkl', 'rb'))
-    return model
-# File path for the saved model
-#MODEL_PATH = "model.pkl"
-#MODEL_PATH = 
+    try:
+        # Correct Google Drive URL for direct download
+        file_id = '1ySNUKWRAhq27DCdnt1t4-fM22XkIFeJ5'
+        url = f'https://drive.google.com/uc?id={file_id}'
+        output_path = 'cmodel.pkl'
 
+        # Download the model file
+        if not os.path.exists(output_path):
+            st.write("Downloading model from Google Drive...")
+            gdown.download(url, output_path, quiet=False)
+        else:
+            st.write("Using cached model file.")
+
+        # Verify file exists and is not empty
+        if not os.path.exists(output_path) or os.path.getsize(output_path) == 0:
+            raise FileNotFoundError("Model file failed to download or is empty.")
+
+        # Try loading with pickle
+        try:
+            with open(output_path, 'rb') as file:
+                model = pickle.load(file)
+            st.success("Model loaded successfully with pickle.")
+            return model
+        except (pickle.UnpicklingError, AttributeError) as e:
+            #st.warning(f"Pickle failed: {e}. Trying joblib...")
+            # Fallback to joblib
+            model = joblib.load(output_path)
+            st.success("Model loaded successfully with joblib.")
+            return model
+
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 # Load the model
-#regr = load_model()
 
 
 regr = load_rf_model()
