@@ -23,28 +23,20 @@ Enter the values for RHOB, GR, NPHI, and PEF below to get the predicted DT value
 @st.cache_resource
 def load_rf_model():
     url = 'https://drive.google.com/file/d/1ySNUKWRAhq27DCdnt1t4-fM22XkIFeJ5/view?usp=sharing'
-    output_path = 'model.pkl'
+    output_path = 'cmodel.pkl'
     gdown.download(url, output_path, quiet=False, fuzzy=True)
-    model = pickle.load(open('model.pkl', 'rb'))
+    model = pickle.load(open('cmodel.pkl', 'rb'))
     return model
 # File path for the saved model
-MODEL_PATH = "model.pkl"
+#MODEL_PATH = "model.pkl"
+#MODEL_PATH = 
+
 
 # Load the model
-def load_model():
-    if os.path.exists(MODEL_PATH):
-        try:
-            model = joblib.load(MODEL_PATH)
-            return model
-        except Exception as e:
-            st.error(f"Error loading model: {str(e)}")
-            return None
-    else:
-        st.error(f"Model file '{MODEL_PATH}' not found in the current directory.")
-        return None
+#regr = load_model()
 
-# Load the model
-regr = load_model()
+
+regr = load_rf_model()
 if regr is None:
     # Stops the Streamlit app execution using st.stop() if the model could not be loaded, preventing the app from proceeding without a valid model.
     st.stop()
