@@ -19,12 +19,7 @@ Enter the values for RHOB, GR, NPHI, and PEF below to get the predicted DT value
 """)
 
 
-import streamlit as st
-import pandas as pd
-import joblib
-import os
-import gdown
-import pickle
+
 
 @st.cache_resource
 def load_rf_model():
