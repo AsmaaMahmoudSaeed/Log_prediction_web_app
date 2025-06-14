@@ -14,7 +14,7 @@ st.set_page_config(page_title="Well Log DT Prediction App", layout="wide")
 ## Displays the main title of the app, "Well Log DT Prediction App", at the top of the web page in large, bold text.
 st.title("Well Log DT Prediction App")
 st.markdown("""
-This application uses a pre-trained Random Forest model to predict the DT (sonic log) value based on well log measurements (RHOB, GR, NPHI, PEF).
+This application uses Machine Learning model to predict the DT (sonic log) value based on well log measurements (RHOB, GR, NPHI, PEF).
 Enter the values for RHOB, GR, NPHI, and PEF below to get the predicted DT value.
 """)
 
