@@ -231,9 +231,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions, feedback, or collaboration, open a GitHub issue or contact me directly.
 
----
-
-**Acknowledgments**:
-- Built with open-source tools: Streamlit, scikit-learn, pandas.
-- Inspired by the need for efficient well log analysis in the Oil & Gas industry.
-- Supported by the Canadian Well Logging Society’s LAS file format.
