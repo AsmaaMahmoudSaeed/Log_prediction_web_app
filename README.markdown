@@ -35,11 +35,8 @@ Built with **Streamlit**, the app offers a user-friendly interface for manual in
 
 ## Features
 - **DT Prediction**: Predict sonic transit time (DT) using RHOB, GR, NPHI, and PEF inputs.
-- **User-Friendly Interface**: Streamlit UI with input forms and tabulated results.
-- **Model Caching**: Efficient model loading with Streamlit’s `@st.cache_resource`.
-- **Error Handling**: Robust handling of model loading and prediction errors.
+- **User-Friendly Interface**: Streamlit UI with input forms and tabulated results..
 - **Online Access**: Deployed on Streamlit Cloud for global accessibility.
-- **Extensibility**: Can be enhanced with LAS file uploads, data visualization (e.g., log plots), or clustering.
 
 ---
 
@@ -129,11 +126,10 @@ To deploy your own version:
   - NPHI: Neutron Porosity (v/v)
   - PEF: Photoelectric Factor (b/e)
 - **Target**: Sonic Transit Time (DT, µs/ft).
-- **Training Data**: Not specified in the repository; assumed to be well log data similar to LAS files.
-- **Serialization**: Model saved as `cmodel.pkl` using `pickle` or `joblib`.
+- **Training Data**: part of volve_wells.csv file.
+- **Serialization**: Model saved as `cmodel.pkl` using `pickle` .
 - **Preprocessing**: Features are likely scaled (e.g., using `StandardScaler`) during training.
 
-**Note**: If using LAS files lacking PEF (e.g., `15-9-19_SR_COMP.LAS`), impute PEF or retrain the model without it.
 
 ---
 
@@ -231,10 +227,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 ## Contact
-- **Author**: Asmaa Mahmoud Saeed
-- **GitHub**: [AsmaaMahmoudSaeed](https://github.com/AsmaaMahmoudSaeed)
-- **Email**: [Add your email if desired]
-- **LinkedIn**: [Add your LinkedIn profile if desired]
+- **LinkedIn**: [[Add your LinkedIn profile if desired](https://www.linkedin.com/in/asmaa-m-491750194/)]
 
 For questions, feedback, or collaboration, open a GitHub issue or contact me directly.
 
