@@ -1,11 +1,10 @@
 # Well Log DT Prediction Web App
 
-A Streamlit-based web application that uses a pre-trained Random Forest
+A Streamlit-based web application that uses a Random Forest
 model to predict **DT (sonic transit time)** from well log measurements
 (RHOB, GR, NPHI, PEF) in the Oil & Gas industry. This tool enables
 petroleum engineers and geoscientists to input well log data manually
-and obtain DT predictions through an intuitive web interface, supporting
-reservoir characterization and exploration.
+and obtain DT predictions through an intuitive web interface.
 
 The app is deployed online via **Streamlit Cloud** at:
 <https://logpredictionwebapp2-qs3gkpoatwjppsfqxfwcdl.streamlit.app/>.
@@ -35,17 +34,14 @@ In the Oil & Gas industry, well log data provides critical insights into
 subsurface formations. The **sonic transit time (DT)** is a key
 measurement indicating rock properties and porosity, but it may be
 missing or noisy in some datasets. This web application uses a
-pre-trained **Random Forest** model to predict DT values based on well
+**Random Forest** model to predict DT values based on well
 log measurements: - **RHOB**: Density (g/cm³) - **GR**: Gamma Ray
 (API) - **NPHI**: Neutron Porosity (v/v) - **PEF**: Photoelectric Factor
 (b/e)
 
 Built with **Streamlit**, the app offers a user-friendly interface for
 manual input of well log data and displays predicted DT values in a
-table. It is designed to work with data similar to **Log ASCII Standard
-(LAS)** files, commonly used in the industry, and can be extended to
-support LAS file uploads or clustering analysis (e.g., K-Means or
-DBSCAN).
+table.
 
 ------------------------------------------------------------------------
 
@@ -57,13 +53,8 @@ DBSCAN).
     tabulated results.
 -   **Model Caching**: Efficient model loading with Streamlit's
     `@st.cache_resource`.
--   **Error Handling**: Robust handling of model loading and prediction
-    errors.
 -   **Online Access**: Deployed on Streamlit Cloud for global
     accessibility.
--   **Extensibility**: Can be enhanced with LAS file uploads, data
-    visualization (e.g., log plots), or clustering.
-
 ------------------------------------------------------------------------
 
 ## Installation
@@ -107,10 +98,10 @@ To run the application locally, follow these steps:
 5.  **Run the App**: Start the Streamlit server:
 
     ``` bash
-    streamlit run app.py
+    streamlit run log_prediction_app.py
     ```
 
-    Open your browser at `http://localhost:8501` to access the app.
+    Open your browser  to access the app.
 
 ------------------------------------------------------------------------
 
@@ -139,14 +130,6 @@ To run the application locally, follow these steps:
     -   Expected Output: Predicted DT (e.g., 95.7 µs/ft) displayed with
         a table.
 
-4.  **Extending the App**:
-
-    -   Add LAS file upload support using `lasio` (e.g., for files like
-        `15-9-19_SR_COMP.LAS`).
-    -   Integrate clustering (e.g., K-Means or DBSCAN) to analyze rock
-        types.
-    -   Include visualizations like log plots or pairplots (as in your
-        previous work).
 
 ------------------------------------------------------------------------
 
@@ -160,7 +143,7 @@ Drive at runtime. - Streamlit Cloud manages dependencies and hosting.
 
 To deploy your own version: 1. Fork or clone the repository. 2. Create a
 Streamlit Cloud account and link your GitHub repository. 3. Configure
-the app settings (e.g., Python version, `requirements.txt`). 4. Deploy
+the app settings (e.g., Python version (3.12.9), `requirements.txt`). 4. Deploy
 and access the public URL provided by Streamlit Cloud.
 
 ------------------------------------------------------------------------
@@ -174,38 +157,33 @@ and access the public URL provided by Streamlit Cloud.
     -   NPHI: Neutron Porosity (v/v)
     -   PEF: Photoelectric Factor (b/e)
 -   **Target**: Sonic Transit Time (DT, µs/ft).
--   **Training Data**: Not specified in the repository; assumed to be
-    well log data similar to LAS files.
--   **Serialization**: Model saved as `cmodel.pkl` using `pickle` or
-    `joblib`.
+-   **Training Data**: part of volve_wells.csv file.
 -   **Preprocessing**: Features are likely scaled (e.g., using
     `StandardScaler`) during training.
 
-**Note**: If using LAS files lacking PEF (e.g., `15-9-19_SR_COMP.LAS`),
-impute PEF or retrain the model without it.
-
+*
 ------------------------------------------------------------------------
 
 ## File Structure
 
     Log_prediction_web_app2/
-    ├── app.py                # Main Streamlit application script
-    ├── requirements.txt      # Python dependencies
-    ├── cmodel.pkl            # Pre-trained Random Forest model (downloaded at runtime)
-    ├── README.md             # Project documentation (this file)
-    └── data/                 # Optional: Directory for sample LAS files or test data
+    ├── log_prediction_app.py               # Main Streamlit application script
+    ├── requirements.txt                    # Python dependencies
+    ├── cmodel.pkl                          # Pre-trained Random Forest model (downloaded at runtime)
+    ├── README.md                           # Project documentation (this file)
+    └── volve_wells.csv                     # Optional: Directory for sample LAS files or test data
 
--   **`app.py`**: Contains the Streamlit app logic for UI, model
+-   **`log_prediction_app.py  `**: Contains the Streamlit app logic for UI, model
     loading, and prediction.
 -   **`cmodel.pkl`**: Downloaded from Google Drive during execution.
 -   **`requirements.txt`**: Lists dependencies (create if missing).
--   **`data/`**: Placeholder for LAS files (not included).
+-   **`volve_wells.csv `**: Dataset.
 
 ------------------------------------------------------------------------
 
 ## Dependencies
 
--   Python 3.8 or later
+-   Python 3.12.9
 -   Libraries (install via `pip`):
     -   `streamlit`: Web app framework
     -   `pandas`: Data manipulation
@@ -219,9 +197,9 @@ Create a `requirements.txt` file with:
     streamlit==1.32.0
     pandas==2.2.2
     numpy==1.26.4
-    scikit-learn==1.5.0
     joblib==1.4.2
     gdown==5.2.0
+    scikit-learn
 
 ------------------------------------------------------------------------
 
@@ -231,7 +209,7 @@ Create a `requirements.txt` file with:
     -   **Cause**: Mismatch in Python or `scikit-learn` versions between
         training and runtime environments.
     -   **Fix**:
-        -   Use the same Python (e.g., 3.8) and `scikit-learn` (e.g.,
+        -   Use the same Python (e.g.,  scikit-learn) and `scikit-learn` (e.g.,
             1.5.0) versions as the training environment.
 
         -   Load the model with `joblib`:
