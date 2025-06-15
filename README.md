@@ -223,13 +223,6 @@ Create a `requirements.txt` file with:
 
 ------------------------------------------------------------------------
 
-## License
-
-This project is licensed under the MIT License. See the
-[LICENSE](LICENSE) file for details (create if missing).
-
-------------------------------------------------------------------------
-
 For questions, feedback, or collaboration, open a GitHub issue or
 contact me directly.
 
