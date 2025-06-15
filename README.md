@@ -8,6 +8,9 @@ and obtain DT predictions through an intuitive web interface.
 
 The app is deployed online via **Streamlit Cloud** at:
 <https://logpredictionwebapp2-qs3gkpoatwjppsfqxfwcdl.streamlit.app/>.
+This code is based on <https://github.com/andymcdgeo/Petrophysics-Python-Series/blob/master/29%20-%20Random%20Forest%20for%20Regression%20-%20Prediction%20of%20Continuous%20Well%20Logs-Copy1.ipynb>
+There is an Arabic explanation of the entire code on my YouTube channel via this link
+<https://www.youtube.com/watch?v=Jo6HKazZyzU>
 
 ------------------------------------------------------------------------
 
