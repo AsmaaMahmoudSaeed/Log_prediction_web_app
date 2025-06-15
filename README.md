@@ -26,9 +26,6 @@ The app is deployed online via **Streamlit Cloud** at:
 -   [File Structure](#file-structure)
 -   [Dependencies](#dependencies)
 -   [Troubleshooting](#troubleshooting)
--   [Contributing](#contributing)
--   [License](#license)
--   [Contact](#contact)
 
 ------------------------------------------------------------------------
 
