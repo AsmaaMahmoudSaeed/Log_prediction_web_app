@@ -199,64 +199,23 @@ Create a `requirements.txt` file with:
     numpy==1.26.4
     joblib==1.4.2
     gdown==5.2.0
-    scikit-learn
+    scikit-learn==1.7.0
 
 ------------------------------------------------------------------------
 
 ## Troubleshooting
 
--   **UnpicklingError: STACK_GLOBAL requires str**:
-    -   **Cause**: Mismatch in Python or `scikit-learn` versions between
-        training and runtime environments.
-    -   **Fix**:
-        -   Use the same Python (e.g.,  scikit-learn) and `scikit-learn` (e.g.,
-            1.5.0) versions as the training environment.
-
-        -   Load the model with `joblib`:
-
-            ``` python
-            import joblib
-            model = joblib.load('cmodel.pkl')
-            ```
-
-        -   Retrain the model:
-
-            ``` python
-            from sklearn.ensemble import RandomForestRegressor
-            model = RandomForestRegressor()
-            model.fit(X_train, y_train)  # Your data
-            joblib.dump(model, 'cmodel.pkl')
-            ```
 -   **Google Drive Download Failure**:
     -   Verify the file ID (`1ySNUKWRAhq27DCdnt1t4-fM22XkIFeJ5`) is
         accessible.
     -   Manually download `cmodel.pkl` and place it in the project
         directory.
     -   Update the Google Drive link if the file is moved.
--   **Missing PEF in LAS Files**:
-    -   Impute PEF (e.g., mean value) or retrain the model without PEF:
-
-        ``` python
-        model.fit(X_train[['RHOB', 'GR', 'NPHI']], y_train)  # Exclude PEF
-        joblib.dump(model, 'cmodel.pkl')
         ```
 -   **Streamlit Cloud Issues**:
     -   Ensure `requirements.txt` includes all dependencies.
     -   Check Streamlit Cloud logs for errors (e.g., missing packages).
     -   Verify Python version compatibility (e.g., 3.8).
-
-------------------------------------------------------------------------
-
-## Contributing
-
-Contributions are welcome! To contribute: 1. Fork the repository. 2.
-Create a branch (`git checkout -b feature/your-feature`). 3. Commit
-changes (`git commit -m "Add your feature"`). 4. Push to the branch
-(`git push origin feature/your-feature`). 5. Open a Pull Request.
-
-Report issues or suggest features via the
-[Issues](https://github.com/AsmaaMahmoudSaeed/Log_prediction_web_app2/issues)
-tab.
 
 ------------------------------------------------------------------------
 
@@ -266,14 +225,6 @@ This project is licensed under the MIT License. See the
 [LICENSE](LICENSE) file for details (create if missing).
 
 ------------------------------------------------------------------------
-
-## Contact
-
--   **Author**: Asmaa Mahmoud Saeed
--   **GitHub**:
-    [AsmaaMahmoudSaeed](https://github.com/AsmaaMahmoudSaeed)
--   **Email**: \[Add your email if desired\]
--   **LinkedIn**: \[Add your LinkedIn profile if desired\]
 
 For questions, feedback, or collaboration, open a GitHub issue or
 contact me directly.
